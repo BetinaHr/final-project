@@ -16,6 +16,13 @@ body {
     background-color: #f5f5f5;
 }
 
+nav {
+    position: relative; /* Or fixed/sticky depending on layout */
+    z-index: 100; /* Higher than .split's z-index */
+}
+
+
+
 /* Update the navigation list */
 ul {
     display: flex; /* Make items appear in a row */
