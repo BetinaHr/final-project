@@ -6,8 +6,8 @@
     top: 0;
     overflow-x: hidden;
     padding-top: 10px;
-    pointer-events: auto;
-    z-index: 0; /* Prevents .split from blocking clicks */
+    z-index: 0;
+    /* Prevents .split from blocking clicks */
 }
 
 .left {
@@ -18,64 +18,94 @@
     right: 0;
 }
 
+.split.right {
+    display: flex;
+    /* Use Flexbox for layout */
+    justify-content: center;
+    /* Horizontally center the content */
+    align-items: center;
+    /* Vertically center the content */
+    height: 100vh;
+    /* Ensure the container takes full height of the viewport */
+}
+
 .centered {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    width: 90%; /* Ensures content doesn't overflow */
+    width: 90%;
+    /* Ensures content doesn't overflow */
 }
 
 .divider {
     position: fixed;
-    top: 15%; /* Adjust this to move the line down or up */
+    top: 15%;
+    /* Adjust this to move the line down or up */
     left: 50%;
-    height: 70%; /* Increase the height of the line */
-    width: 2px; /* Thickness of the line */
-    background-color: #81ecec; /* Color of the line */
-    z-index: 2; /* Ensure it's above the content but behind .split sections */
+    height: 70%;
+    /* Increase the height of the line */
+    width: 2px;
+    /* Thickness of the line */
+    background-color: #81ecec;
+    /* Color of the line */
+    z-index: 2;
+    /* Ensure it's above the content but behind .split sections */
 }
 
 p {
     font-size: 80px;
     font-family: 'Kugile', sans-serif;
-    margin-bottom: 20px; /* Adds spacing below the title */
+    margin-bottom: 20px;
+    /* Adds spacing below the title */
 }
 
 h2 {
-    text-align: center; /* Aligns the question in the center */
-    margin-bottom: 20px; /* Adds spacing below the question */
+    text-align: center;
+    /* Aligns the question in the center */
+    margin-bottom: 20px;
+    /* Adds spacing below the question */
 }
 
 .container {
     max-width: 650px;
     font-family: 'Kugile', sans-serif;
-    font-size: 14px; /* Slightly larger font for readability */
+    font-size: 14px;
+    /* Slightly larger font for readability */
 }
 
 ul.ks-cboxtags {
     list-style: none;
-    padding: 0; /* Removes extra padding from the list */
+    padding: 0;
+    /* Removes extra padding from the list */
     display: flex;
-    flex-wrap: wrap; /* Allows items to wrap to the next line */
-    justify-content: center; /* Centers the items horizontally */
-    gap: 15px; /* Adds space between the items */
+    flex-wrap: wrap;
+    /* Allows items to wrap to the next line */
+    justify-content: center;
+    /* Centers the items horizontally */
+    gap: 15px;
+    /* Adds space between the items */
 }
 
 ul.ks-cboxtags li {
-    display: inline-block; /* Ensures proper alignment */
-    margin: 5px; /* Adds spacing around each item */
+    display: inline-block;
+    /* Ensures proper alignment */
+    margin: 5px;
+    /* Adds spacing around each item */
 }
 
 ul.ks-cboxtags li label {
     display: inline-block;
-    background-color: rgba(255, 255, 255, .9);
+    background-color: #9CD8BD;
     border: 2px solid rgba(139, 139, 139, .3);
-    color: #adadad;
+    color: rgba(255, 255, 255, 0.9);
+    /*TEXT LABEL*/
+    text-shadow: #333642;
     border-radius: 25px;
     white-space: nowrap;
-    padding: 10px 15px; /* Adjusted for consistent size */
+    padding: 10px 15px;
+    /* Adjusted for consistent size */
     cursor: pointer;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -122,23 +152,141 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     border: 2px solid #e9a1ff;
 }
 
+/* For negative */
+ul.ks-cboxtags-negative {
+    list-style: none;
+    padding: 0;
+    /* Removes extra padding from the list */
+    display: flex;
+    flex-wrap: wrap;
+    /* Allows items to wrap to the next line */
+    justify-content: center;
+    /* Centers the items horizontally */
+    gap: 15px;
+    /* Adds space between the items */
+}
+
+ul.ks-cboxtags-negative li {
+    display: inline-block;
+    /* Ensures proper alignment */
+    margin: 5px;
+    /* Adds spacing around each item */
+}
+
+ul.ks-cboxtags-negative li label {
+    display: inline-block;
+    background-color: #F796A8;
+    border: 2px solid rgba(139, 139, 139, .3);
+    color: #ffffff;
+    border-radius: 25px;
+    white-space: nowrap;
+    padding: 10px 15px;
+    /* Adjusted for consistent size */
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags-negative li label::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    padding: 2px 6px 2px 2px;
+    content: "\f067";
+    transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags-negative li input[type="checkbox"]:checked+label::before {
+    content: "\f00c";
+    transform: rotate(-360deg);
+    transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags-negative li input[type="checkbox"]:checked+label {
+    border: 2px solid #1bdbf8;
+    background-color: #12bbd4;
+    color: #fff;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags-negative li input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+}
+
+ul.ks-cboxtags-negative li input[type="checkbox"]:focus+label {
+    border: 2px solid #e9a1ff;
+}
+
 
 /* Record Player */
+.record-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    max-width: 600px;
+    position: relative;
+}
+
+.record-btn {
+    position: absolute;
+    top: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    background-color: #ffeaa7;
+    border: 2px solid #422800;
+    border-radius: 30px;
+    box-shadow: #422800 4px 4px 0 0;
+    color: #422800;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.record-btn:hover {
+    background-color: #fff;
+}
+
+.record-btn:active {
+    background-color: #fff;
+    box-shadow: #422800 2px 2px 0 0;
+    transform: translate(2px, 2px);
+}
 
 .turntable {
     position: relative;
     margin: auto;
     display: block;
-    margin-top: 28%; /* Adjust this value to control the vertical positioning */
+    margin-top: 28%;
+    /* Adjust this value to control the vertical positioning */
     margin-bottom: 8%;
     width: 310px;
     height: 280px;
     background: #9CD8BD;
     border-radius: 5%;
     box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.7);
-  }
-  
-  .record {
+}
+
+.record {
     position: absolute;
     left: 35px;
     top: 35px;
@@ -147,19 +295,19 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     background: black;
     border-radius: 50%;
     animation: spin 1s infinite linear;
-  }
-  
-  @keyframes spin {
+}
+
+@keyframes spin {
     0% {
-      transform: none;
+        transform: none;
     }
-    
+
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-  
-  .record::before {
+}
+
+.record::before {
     content: '';
     left: 50%;
     top: 50%;
@@ -169,21 +317,21 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     height: 180px;
     background: repeating-radial-gradient(black, black 5px, #1C1C1C 6px, #1C1C1C 7px);
     border-radius: 50%;
-  }
-  
-  .overlay {
+}
+
+.overlay {
     content: '';
     left: 35px;
     top: 35px;
     position: absolute;
     width: 200px;
     height: 200px;
-    background: linear-gradient(45deg, transparent, 40%, rgba(255,255,255,0.35), 60%, transparent);
+    background: linear-gradient(45deg, transparent, 40%, rgba(255, 255, 255, 0.35), 60%, transparent);
     border-radius: 50%;
-  }
-  
-  
-  .inner {
+}
+
+
+.inner {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -192,9 +340,9 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     height: 55px;
     background: linear-gradient(white, white 50%, #F796A8 50%, #F796A8);
     border-radius: 50%;
-  }
-  
-  .inner::before {
+}
+
+.inner::before {
     content: '';
     position: absolute;
     left: 50%;
@@ -204,9 +352,9 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     height: 10px;
     background: black;
     border-radius: 50%;
-  }
-  
-  .inner::after {
+}
+
+.inner::after {
     content: '100 Days';
     width: 55px;
     text-align: center;
@@ -216,9 +364,9 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     left: 50%;
     top: 10px;
     transform: translateX(-50%);
-  }
-  
-  .arm-holder {
+}
+
+.arm-holder {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -226,9 +374,9 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     border-radius: 50%;
     right: 20px;
     top: 40px;
-  }
-  
-  .arm-holder::after {
+}
+
+.arm-holder::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -238,9 +386,9 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     height: 30px;
     background: #939393;
     border-radius: 50%;
-  }
-  
-  .arm {
+}
+
+.arm {
     position: absolute;
     right: 13px;
     width: 60px;
@@ -254,19 +402,19 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     border-radius: 0 0 30% 0;
     animation: armTwitch 0.5s infinite;
     animation-direction: alternate-reverse;
-  }
-  
-  @keyframes armTwitch {
+}
+
+@keyframes armTwitch {
     0% {
-      transform: skew(-20deg, -20deg);
+        transform: skew(-20deg, -20deg);
     }
-    
+
     100% {
-      transform: skew(-20deg, -20deg) rotate(1deg);
+        transform: skew(-20deg, -20deg) rotate(1deg);
     }
-  }
-  
-  .arm::before {
+}
+
+.arm::before {
     content: '';
     position: absolute;
     width: 20px;
@@ -277,9 +425,9 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     left: -10px;
     border-radius: 20%;
     clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
-  }
-  
-  .dial {
+}
+
+.dial {
     position: absolute;
     bottom: 20px;
     right: 20px;
@@ -287,9 +435,9 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     height: 25px;
     background: #333642;
     border-radius: 50%;
-  }
-  
-  .dial::before {
+}
+
+.dial::before {
     content: '';
     left: 50%;
     transform: translateX(-50%);
@@ -299,5 +447,4 @@ ul.ks-cboxtags li input[type="checkbox"]:focus+label {
     height: 5px;
     background: white;
     border-radius: 50%;
-  }
-  
+}

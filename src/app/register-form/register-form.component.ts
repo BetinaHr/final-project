@@ -17,7 +17,7 @@ export class RegisterFormComponent {
   // Inject AuthService in the constructor
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.registerForm = this.fb.group({
-      name: [''],
+      username: [''],
       email: [''],
       password: [''],
       confirmPassword: [''],
@@ -26,19 +26,56 @@ export class RegisterFormComponent {
   }
 
   // Handle form submission
-  onSubmit() {
-    const formData = this.registerForm.value;
-    console.log(formData);
+  // onSubmit() {
+  //   const formData = this.registerForm.value;
+  //   console.log('----');
+  //   console.log(formData);
     
 
-    // Call the register API
-    this.authService.register(formData).subscribe({
-      next: (response) => {
-        console.log('Registration successful:', response);
-      },
-      error: (err) => {
-        console.error('Registration error:', err);
-      }
-    });
+  //   // Call the register API
+  //   this.authService.register({
+  //     username: this.registerForm.value.username,
+  //     email: this.registerForm.value.email,
+  //     password: this.registerForm.value.password
+  //   }).subscribe(
+  //     (response) => {
+  //       console.log('Registration successful:', response);
+  //     },
+  //     (error) => {
+  //       console.error('Registration error:', error);
+  //     });
+  // }
+
+  onSubmit() {
+    // Extract values from form
+    const { username, email, password, confirmPassword, acceptTerms } = this.registerForm.value;
+    console.log('username is', username, 'email is:', email);
+    
+    // You can add a check to ensure confirmPassword matches password
+    if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+  
+    // Call the registration API
+    this.authService.register({ username, email, password, acceptTerms })
+      .subscribe(
+        (response) => {
+          console.log('Registration successful:', response);
+        },
+        (error) => {
+          console.error('Registration error:', error);
+        }
+      );
   }
+
+//   onSubmit() {
+//     if (this.registerForm.valid) {
+//       const formData = this.registerForm.value;
+//       this.authService.register(formData).subscribe({
+//         next: (response) => console.log('Registration successful:', response),
+//         error: (err) => console.error('Registration error:', err),
+//       });
+//     }
+//   }
 }

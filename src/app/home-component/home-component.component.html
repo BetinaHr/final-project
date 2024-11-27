@@ -6,44 +6,29 @@
                 How are you feeling today?
             </h2>
             <ul class="ks-cboxtags">
-                <li><input type="checkbox" id="checkboxOne" value="Happy"><label for="checkboxOne">Happy</label></li>
-                <li><input type="checkbox" id="checkboxTwo" value="Hopeful" ><label
-                        for="checkboxTwo">Hopeful</label>
-                </li>
-                <li><input type="checkbox" id="checkboxThree" value="Empowered" ><label
-                        for="checkboxThree">Empowered</label></li>
-                <li><input type="checkbox" id="checkboxFour" value="Excited"><label for="checkboxFour">Excited</label>
-                </li>
-                <li><input type="checkbox" id="checkboxFive" value="Optimistic"><label
-                        for="checkboxFive">Optimistic</label>
-                </li>
-                <li><input type="checkbox" id="checkboxSix" value="Relaxed"><label
-                        for="checkboxSix">Relaxed</label>
-                </li>
-                <li><input type="checkbox" id="checkboxSeven" value="Confident"><label
-                        for="checkboxSeven">Confident</label>
-                </li>
-                <li><input type="checkbox" id="checkboxEight" value="Peaceful"><label
-                        for="checkboxEight">Peaceful</label>
-                </li>
+                <li class="positive"><input type="checkbox" id="checkboxOne" value="Happy"><label for="checkboxOne">Happy</label></li>
+                <li class="positive"><input type="checkbox" id="checkboxTwo" value="Hopeful" ><label for="checkboxTwo">Hopeful</label></li>
+                <li class="positive"><input type="checkbox" id="checkboxThree" value="Empowered" ><label for="checkboxThree">Empowered</label></li>
+                <li class="positive"><input type="checkbox" id="checkboxFour" value="Excited"><label for="checkboxFour">Excited</label></li>
+                <li class="positive"><input type="checkbox" id="checkboxFive" value="Optimistic"><label for="checkboxFive">Optimistic</label> </li>
+                <li class="positive"><input type="checkbox" id="checkboxSix" value="Relaxed"><label for="checkboxSix">Relaxed</label></li>
+                <li class="positive"><input type="checkbox" id="checkboxSeven" value="Confident"><label for="checkboxSeven">Confident</label></li>
+                <li class="positive"><input type="checkbox" id="checkboxEight" value="Peaceful"><label for="checkboxEight">Peaceful</label></li>
 
-                <br>
-                <br>
-                <li><input type="checkbox" id="checkboxNine" value="Sad"><label for="checkboxNine">Sad</label></li>
-                <li><input type="checkbox" id="checkboxTen" value="Depressed"><label for="checkboxTen">Depressed</label>
-                </li>
-                <li class="ks-selected"><input type="checkbox" id="checkboxEleven" value="Jealous"><label
-                        for="checkboxEleven">Jealous</label></li>
-                <li><input type="checkbox" id="checkboxTwelve" value="Clover"><label for="checkboxTwelve">Clover</label>
-                </li>
-                <li><input type="checkbox" id="checkboxThirteen" value="Stressed"><label
-                        for="checkboxThirteen">Stressed</label></li>
-                <li><input type="checkbox" id="checkboxFourteen" value="Medley"><label
-                        for="checkboxFourteen">Medley</label>
-                </li>
-                <li><input type="checkbox" id="checkboxFifteen" value="Firefly"><label
-                        for="checkboxFifteen">Firefly</label>
-                </li>
+            </ul>
+
+            <br>
+            <br>
+
+            <ul class="ks-cboxtags-negative">
+            <li><input type="checkbox" id="checkboxNine" value="Sad"><label for="checkboxNine">Sad</label></li>
+            <li><input type="checkbox" id="checkboxTen" value="Depressed"><label for="checkboxTen">Depressed</label></li>
+            <li class="ks-selected"><input type="checkbox" id="checkboxEleven" value="Jealous"><label for="checkboxEleven">Jealous</label></li>
+            <li><input type="checkbox" id="checkboxTwelve" value="Overwhelmed"><label for="checkboxTwelve">Overwhelmed</label></li>
+            <li><input type="checkbox" id="checkboxThirteen" value="Stressed"><label for="checkboxThirteen">Stressed</label></li>
+            <li><input type="checkbox" id="checkboxFourteen" value="Tired"><label for="checkboxFourteen">Tired</label></li>
+            <li><input type="checkbox" id="checkboxFifteen" value="Bored"><label for="checkboxFifteen">Bored</label></li>
+            <li><input type="checkbox" id="checkboxSixteen" value="Hopeless"><label for="checkboxFifteen">Hopeless</label></li>
             </ul>
         </div>
     </div>
@@ -52,14 +37,17 @@
 <div class="divider"></div>
 
 <div class="split right">
-    <div class="turntable">
-        <div class="record">
-          <div class="inner"></div>
+    <div class="record-player">
+        <button class="record-btn">Generate Playlist</button>
+        <div class="turntable">
+            <div class="record">
+                <div class="inner"></div>
+            </div>
+            <div class="overlay"></div>
+            <div class="arm-holder">
+                <div class="arm"></div>
+            </div>
+            <div class="dial"></div>
         </div>
-        <div class="overlay"></div>
-        <div class="arm-holder">
-          <div class="arm"></div>
-        </div>
-        <div class="dial"></div>
-      </div>
+    </div>
 </div>

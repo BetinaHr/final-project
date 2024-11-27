@@ -3,20 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' // Makes this service available app-wide
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:4200/';
+  private baseUrl = 'http://localhost:5000'; // Replace with your backend's URL if different
 
   constructor(private http: HttpClient) {}
 
-  // Register a new user
-  register(userData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, userData);
-  }
-
-  // Login a user
-  login(credentials: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, credentials);
+  register(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/auth/register`, data, { withCredentials: true });
   }
 }
