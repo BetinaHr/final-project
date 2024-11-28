@@ -3,6 +3,7 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
@@ -13,69 +14,40 @@ import { AuthService } from '../services/auth.service';
 })
 export class RegisterFormComponent {
   registerForm: FormGroup;
+  errors: string[] = [];
 
-  // Inject AuthService in the constructor
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { // Inject Router here
     this.registerForm = this.fb.group({
-      username: [''],
-      email: [''],
-      password: [''],
-      confirmPassword: [''],
-      acceptTerms: [false]
+      username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+      acceptTerms: [false, Validators.requiredTrue]
     });
   }
 
-  // Handle form submission
-  // onSubmit() {
-  //   const formData = this.registerForm.value;
-  //   console.log('----');
-  //   console.log(formData);
-    
-
-  //   // Call the register API
-  //   this.authService.register({
-  //     username: this.registerForm.value.username,
-  //     email: this.registerForm.value.email,
-  //     password: this.registerForm.value.password
-  //   }).subscribe(
-  //     (response) => {
-  //       console.log('Registration successful:', response);
-  //     },
-  //     (error) => {
-  //       console.error('Registration error:', error);
-  //     });
-  // }
-
   onSubmit() {
-    // Extract values from form
     const { username, email, password, confirmPassword, acceptTerms } = this.registerForm.value;
-    console.log('username is', username, 'email is:', email);
-    
-    // You can add a check to ensure confirmPassword matches password
+
+    // Password confirmation validation
     if (password !== confirmPassword) {
-      alert('Passwords do not match');
+      this.errors = ['Passwords do not match'];
       return;
     }
-  
-    // Call the registration API
-    this.authService.register({ username, email, password, acceptTerms })
-      .subscribe(
-        (response) => {
-          console.log('Registration successful:', response);
-        },
-        (error) => {
-          console.error('Registration error:', error);
-        }
-      );
-  }
 
-//   onSubmit() {
-//     if (this.registerForm.valid) {
-//       const formData = this.registerForm.value;
-//       this.authService.register(formData).subscribe({
-//         next: (response) => console.log('Registration successful:', response),
-//         error: (err) => console.error('Registration error:', err),
-//       });
-//     }
-//   }
+    this.authService.register({ username, email, password, acceptTerms }).subscribe({
+      next: (response) => {
+        console.log('Registration successful:', response);
+        this.errors = [];
+        this.router.navigate(['/']); // Redirect to home page
+      },
+      error: (err) => {
+        if (err.error && err.error.error) {
+          this.errors = [err.error.error]; // Show backend error message
+        } else {
+          this.errors = ['An unexpected error occurred.'];
+        }
+      }
+    });
+  }
 }

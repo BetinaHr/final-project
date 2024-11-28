@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: [true, 'Email is required!'],
+    unique: [true, 'This user already exists!'],
     minLength: [10, 'Email must be at least 10 characters long!'],
     validate: {
       validator: (email) => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email),

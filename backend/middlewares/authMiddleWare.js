@@ -23,9 +23,9 @@ export const authMiddleware = async (req, res, next) => {
 };
 
 export const isAuth = (req, res, next) => {
-    if (!req.user) {
-        return res.redirect('/404');  // Redirect to 404 or login page if not authenticated
-    }
+    if(!req.user) {
+        return res.redirect('/404');
+    };
 
     next();
 };
