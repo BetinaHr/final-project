@@ -11,15 +11,15 @@ import { hashPassword, verifyPassword } from './utils/passwordUtils.js'; // Adju
 
 const app = express();
 
-// Enable CORS with credentials support
+
 app.use(cors({
-  origin: 'http://localhost:4200',  // Allow requests from your Angular frontend
-  credentials: true,               // Allow credentials (cookies) to be sent
+  origin: 'http://localhost:4200', 
+  credentials: true,              
 }));
 
 app.use(express.json());
-app.use(cookieParser());  // Add cookie-parser middleware to parse cookies
-app.use(authMiddleware);  // This will run the authMiddleware on all routes
+app.use(cookieParser()); 
+app.use(authMiddleware);
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/normalUsers', {
@@ -90,12 +90,10 @@ app.post('/auth/login', async (req, res) => {
     // Set the token in the cookie
     res.cookie('AUTH', token, {
       httpOnly: true,  
-      // secure: process.env.NODE_ENV === 'production',
       maxAge: 3600000,  // 1 hour expiry
-      // sameSite: 'Strict',
+
     });
 
-    // Send success response
     res.status(200).json({ message: "Login successful!" });
   } catch (err) {
     const errorMessage = getErrorMessage(err);
@@ -119,6 +117,14 @@ app.post('/auth/logout', (req, res) => {
   } catch (err) {
     console.error("Error during logout:", err);
     res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.get('/auth/check', authMiddleware, (req, res) => {
+  if (req.isAuthenticated) {
+    res.status(200).json({ user: req.user });
+  } else {
+    res.status(401).json({ message: 'Unauthorized' });
   }
 });
 

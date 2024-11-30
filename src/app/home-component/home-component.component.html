@@ -2,33 +2,56 @@
     <div class="centered">
         <div class="container">
             <p>Music Mixer</p>
-            <h2>
-                How are you feeling today?
-            </h2>
-            <ul class="ks-cboxtags">
-                <li class="positive"><input type="checkbox" id="checkboxOne" value="Happy"><label for="checkboxOne">Happy</label></li>
-                <li class="positive"><input type="checkbox" id="checkboxTwo" value="Hopeful" ><label for="checkboxTwo">Hopeful</label></li>
-                <li class="positive"><input type="checkbox" id="checkboxThree" value="Empowered" ><label for="checkboxThree">Empowered</label></li>
-                <li class="positive"><input type="checkbox" id="checkboxFour" value="Excited"><label for="checkboxFour">Excited</label></li>
-                <li class="positive"><input type="checkbox" id="checkboxFive" value="Optimistic"><label for="checkboxFive">Optimistic</label> </li>
-                <li class="positive"><input type="checkbox" id="checkboxSix" value="Relaxed"><label for="checkboxSix">Relaxed</label></li>
-                <li class="positive"><input type="checkbox" id="checkboxSeven" value="Confident"><label for="checkboxSeven">Confident</label></li>
-                <li class="positive"><input type="checkbox" id="checkboxEight" value="Peaceful"><label for="checkboxEight">Peaceful</label></li>
+            <h2>How are you feeling today?</h2>
 
+            <!-- Positive Moods -->
+            <ul class="ks-cboxtags">
+                <li class="positive">
+                    <input type="checkbox" id="checkboxOne" value="Happy" (change)="onMoodSelectionChange('Happy', $event)">
+                    <label for="checkboxOne">Happy</label>
+                </li>
+                <li class="positive">
+                    <input type="checkbox" id="checkboxTwo" value="Hopeful" (change)="onMoodSelectionChange('Hopeful', $event)">
+                    <label for="checkboxTwo">Hopeful</label>
+                </li>
+                <li class="positive">
+                    <input type="checkbox" id="checkboxThree" value="Empowered" (change)="onMoodSelectionChange('Empowered', $event)">
+                    <label for="checkboxThree">Empowered</label>
+                </li>
+                <li class="positive">
+                    <input type="checkbox" id="checkboxFour" value="Excited" (change)="onMoodSelectionChange('Excited', $event)">
+                    <label for="checkboxFour">Excited</label>
+                </li>
+                <li class="positive">
+                    <input type="checkbox" id="checkboxFive" value="Optimistic" (change)="onMoodSelectionChange('Optimistic', $event)">
+                    <label for="checkboxFive">Optimistic</label>
+                </li>
+                <li class="positive">
+                    <input type="checkbox" id="checkboxSix" value="Relaxed" (change)="onMoodSelectionChange('Relaxed', $event)">
+                    <label for="checkboxSix">Relaxed</label>
+                </li>
+                <li class="positive">
+                    <input type="checkbox" id="checkboxSeven" value="Confident" (change)="onMoodSelectionChange('Confident', $event)">
+                    <label for="checkboxSeven">Confident</label>
+                </li>
+                <li class="positive">
+                    <input type="checkbox" id="checkboxEight" value="Peaceful" (change)="onMoodSelectionChange('Peaceful', $event)">
+                    <label for="checkboxEight">Peaceful</label>
+                </li>
             </ul>
 
-            <br>
-            <br>
+            <br><br>
 
+            <!-- Negative Moods -->
             <ul class="ks-cboxtags-negative">
-            <li><input type="checkbox" id="checkboxNine" value="Sad"><label for="checkboxNine">Sad</label></li>
-            <li><input type="checkbox" id="checkboxTen" value="Depressed"><label for="checkboxTen">Depressed</label></li>
-            <li class="ks-selected"><input type="checkbox" id="checkboxEleven" value="Jealous"><label for="checkboxEleven">Jealous</label></li>
-            <li><input type="checkbox" id="checkboxTwelve" value="Overwhelmed"><label for="checkboxTwelve">Overwhelmed</label></li>
-            <li><input type="checkbox" id="checkboxThirteen" value="Stressed"><label for="checkboxThirteen">Stressed</label></li>
-            <li><input type="checkbox" id="checkboxFourteen" value="Tired"><label for="checkboxFourteen">Tired</label></li>
-            <li><input type="checkbox" id="checkboxFifteen" value="Bored"><label for="checkboxFifteen">Bored</label></li>
-            <li><input type="checkbox" id="checkboxSixteen" value="Hopeless"><label for="checkboxFifteen">Hopeless</label></li>
+                <li><input type="checkbox" id="checkboxNine" value="Sad" (change)="onMoodSelectionChange('Sad', $event)"><label for="checkboxNine">Sad</label></li>
+                <li><input type="checkbox" id="checkboxTen" value="Depressed" (change)="onMoodSelectionChange('Depressed', $event)"><label for="checkboxTen">Depressed</label></li>
+                <li><input type="checkbox" id="checkboxEleven" value="Jealous" (change)="onMoodSelectionChange('Jealous', $event)"><label for="checkboxEleven">Jealous</label></li>
+                <li><input type="checkbox" id="checkboxTwelve" value="Overwhelmed" (change)="onMoodSelectionChange('Overwhelmed', $event)"><label for="checkboxTwelve">Overwhelmed</label></li>
+                <li><input type="checkbox" id="checkboxThirteen" value="Stressed" (change)="onMoodSelectionChange('Stressed', $event)"><label for="checkboxThirteen">Stressed</label></li>
+                <li><input type="checkbox" id="checkboxFourteen" value="Tired" (change)="onMoodSelectionChange('Tired', $event)"><label for="checkboxFourteen">Tired</label></li>
+                <li><input type="checkbox" id="checkboxFifteen" value="Bored" (change)="onMoodSelectionChange('Bored', $event)"><label for="checkboxFifteen">Bored</label></li>
+                <li><input type="checkbox" id="checkboxSixteen" value="Hopeless" (change)="onMoodSelectionChange('Hopeless', $event)"><label for="checkboxSixteen">Hopeless</label></li>
             </ul>
         </div>
     </div>
@@ -38,7 +61,7 @@
 
 <div class="split right">
     <div class="record-player">
-        <button class="record-btn">Generate Playlist</button>
+        <button class="record-btn" (click)="generatePlaylist()">Generate Playlist</button>
         <div class="turntable">
             <div class="record">
                 <div class="inner"></div>

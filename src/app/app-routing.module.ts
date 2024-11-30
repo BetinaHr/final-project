@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  // Define your routes here
-  // Example: { path: 'home', component: HomeComponent }
+
 ];
 
 @NgModule({

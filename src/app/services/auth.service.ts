@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root' // Makes this service available app-wide
+  providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:5000'; // Replace with your backend's URL if different
+  private baseUrl = 'http://localhost:5000';
 
   constructor(private http: HttpClient) { }
 

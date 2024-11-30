@@ -1,0 +1,31 @@
+<div>
+    <h2>Search Results for Genre: {{ genre }}</h2>
+  
+    <div *ngIf="artistData">
+      <h3>Top Artists</h3>
+      <ul>
+        <li *ngFor="let artist of artistData">
+          <strong>{{ artist.name }}</strong>
+        </li>
+      </ul>
+    </div>
+  
+    <div *ngIf="albumData">
+      <h3>Top Albums</h3>
+      <ul>
+        <li *ngFor="let album of albumData">
+          <strong>{{ album.name }}</strong> by {{ album.artist.name }}
+        </li>
+      </ul>
+    </div>
+  
+    <div *ngIf="trackData">
+      <h3>Tracks in Album</h3>
+      <ul>
+        <li *ngFor="let track of trackData">
+          {{ track.name }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  
